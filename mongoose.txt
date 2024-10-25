@@ -1,0 +1,5 @@
+npm i mongo db
+npm i mongoose
+create folder db 
+  create a connection.js file
+  
