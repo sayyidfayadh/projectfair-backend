@@ -79,9 +79,10 @@ exports.editUserProject=async(req,res)=>{
     res.status(200).json(updateProject)
   } catch (error) {
     res.status(401).json(error)
+   
   }
 }
-//delete projects
+//delete projects\\\
 
 exports.deleteProject=async(req,res)=>{
 const {pid}=req.params
@@ -91,5 +92,5 @@ try {
 } catch (error) {
   res.status(401).json(error)
 }
-
+log]
 }
