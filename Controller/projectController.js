@@ -51,9 +51,15 @@ exports.getAllUserProjects=async(req,res)=>{
 }
 //getAllProjects
 exports.getAllProjects=async(req,res)=>{
+  const searchKey=req.query.search
+  const query={
+    language:{
+      $regex:searchKey,$options:"i"
+    }
+}
   try {
     console.log("inside getall");
-    const allProjects=await project.find()
+    const allProjects=await project.find(query)
     res.status(200).json(allProjects)
   } catch (error) {
     res.status(401).json(error)
@@ -74,4 +80,16 @@ exports.editUserProject=async(req,res)=>{
   } catch (error) {
     res.status(401).json(error)
   }
+}
+//delete projects
+
+exports.deleteProject=async(req,res)=>{
+const {pid}=req.params
+try {
+  const deleteProject=await project.findByIdAndDelete({_id:pid})
+  res.status(200).json(deleteProject)
+} catch (error) {
+  res.status(401).json(error)
+}
+
 }

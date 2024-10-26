@@ -24,3 +24,5 @@ module.exports=router
 //editproject
 //router spcifc middleware
 router.put('/projects/edit/:pid',jwtMiddleware,multerConfig.single('projectImage'),projectController.editUserProject)
+//deleteproject
+router.delete('/projects/delete/:pid',jwtMiddleware,projectController.deleteProject)
