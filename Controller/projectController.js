@@ -43,6 +43,8 @@ exports.getAllUserProjects=async(req,res)=>{
     // console.log("User ID: ", userid);
     const allUserProjects = await project.find({ userId: userid });
     res.status(200).json(allUserProjects)
+    // console.log(allUserProjects);
+    
     // console.log("inside the getalluserpro controler");
     
   } catch (error) {

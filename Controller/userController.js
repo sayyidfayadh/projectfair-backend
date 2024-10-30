@@ -48,3 +48,35 @@ exports.login=async (req,res)=>{
   
  
 }
+exports.updateProfile=async(req,res)=>{
+  const{profile,github,linkedin}=req.body
+  const userId=req.payload
+  const newProfile=req.file?req.file.filename:profile
+  try {
+    const updateProfile=await users.findByIdAndUpdate(userId,{
+      profile:newProfile,github,linkedin
+    },{new:true})
+    await updateProfile.save()
+    res.status(200).json(updateProfile)
+    
+  } catch (error) {
+    res.status(401).json(error)
+  }
+}
+//get pdata
+exports.getProfile=async(req,res)=>{
+  const userId=req.payload;
+  // console.log(userId);
+  
+  try {
+    const existingProfileData=await users.findOne({_id:userId}).select(`-password`)
+    res.status(200).json(existingProfileData)
+    console.log(existingProfileData);
+
+    
+    } catch (error) {
+      res.status(401).json(error)
+    
+  }
+  
+}
