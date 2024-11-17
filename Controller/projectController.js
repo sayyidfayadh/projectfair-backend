@@ -29,7 +29,6 @@ exports.getHomeProjects=async (req,res)=>{
   try {
     const allProjects=await project.find().limit(3)
     res.status(200).json(allProjects)
-    
   } catch (error) {
     res.status(401).json(error)
   }

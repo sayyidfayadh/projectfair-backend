@@ -19,7 +19,6 @@ router.get('/userprojects',jwtMiddleware,projectController.getAllUserProjects)
 //get all projects in explore
 
 router.get('/allprojects',jwtMiddleware,projectController.getAllProjects)
-module.exports=router
 
 //editproject
 //router spcifc middleware
@@ -32,3 +31,4 @@ router.get('/profileData',jwtMiddleware,userController.getProfile)
 //update profile
 router.put('/updateProfile',jwtMiddleware,multerConfig.single('profile'),userController.updateProfile)
 
+module.exports=router
